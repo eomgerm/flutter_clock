@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clock/painter/seconds_painter.dart';
+import 'package:flutter_clock/widget/city_time_card.dart';
 import 'package:flutter_clock/widget/clock_text.dart';
 
 void main() {
@@ -58,7 +59,7 @@ class App extends StatelessWidget {
         body: Column(
           children: [
             const SizedBox(
-              height: 50,
+              height: 35,
             ),
             Center(
               child: Stack(
@@ -100,9 +101,22 @@ class App extends StatelessWidget {
               ),
             ),
             const SizedBox(
-              height: 30,
+              height: 25,
             ),
             const ClockText(),
+            const SizedBox(
+              height: 35,
+            ),
+            SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  children: const [
+                    CityTimeCard(),
+                  ],
+                ),
+              ),
+            )
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(
