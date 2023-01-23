@@ -41,7 +41,7 @@ class _ClockTextState extends State<ClockText> {
           timeText,
           style: const TextStyle(
             color: Colors.white,
-            fontSize: 26,
+            fontSize: 22,
             fontWeight: FontWeight.w700,
           ),
         ),
@@ -51,7 +51,7 @@ class _ClockTextState extends State<ClockText> {
         Text(
           dateText,
           style: const TextStyle(
-            fontSize: 20,
+            fontSize: 16,
             color: Colors.white,
             fontWeight: FontWeight.w300,
           ),
