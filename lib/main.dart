@@ -105,7 +105,7 @@ class App extends StatelessWidget {
             ),
             const ClockText(),
             const SizedBox(
-              height: 35,
+              height: 25,
             ),
             SingleChildScrollView(
               child: Padding(
