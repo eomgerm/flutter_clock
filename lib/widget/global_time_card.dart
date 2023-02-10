@@ -6,9 +6,12 @@ import 'package:flutter_clock/services/api_service.dart';
 import 'package:intl/intl.dart';
 
 class CityTimeCard extends StatefulWidget {
+  final String city;
+
   const CityTimeCard({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+    required this.city,
+  });
 
   @override
   State<CityTimeCard> createState() => _CityTimeCardState();
@@ -25,10 +28,12 @@ class _CityTimeCardState extends State<CityTimeCard> {
     dateText = DateFormat('EEE, MM/dd').format(now);
   }
 
+  String formatCityName(String city) => city.split('/')[1].replaceAll('_', ' ');
+
   @override
   void initState() {
     super.initState();
-    ApiService.getTimeInfo('America/New_York').then((value) {
+    ApiService.getTimeInfo(widget.city).then((value) {
       timeInfo = value;
       setState(() {});
     });
@@ -60,9 +65,9 @@ class _CityTimeCardState extends State<CityTimeCard> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
-                  'New York',
-                  style: TextStyle(
+                Text(
+                  formatCityName(widget.city),
+                  style: const TextStyle(
                     fontSize: 18,
                   ),
                 ),

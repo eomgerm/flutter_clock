@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clock/painter/seconds_painter.dart';
-import 'package:flutter_clock/widget/global_time_card.dart';
 import 'package:flutter_clock/widget/clock_text.dart';
+import 'package:flutter_clock/widget/global_time_card.dart';
 
 void main() {
   runApp(const App());
@@ -9,6 +9,13 @@ void main() {
 
 class App extends StatelessWidget {
   const App({super.key});
+
+  static const cities = [
+    'America/New_York',
+    'Europe/Berlin',
+    'Europe/London',
+    'America/Toronto',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -107,13 +114,22 @@ class App extends StatelessWidget {
             const SizedBox(
               height: 25,
             ),
-            SingleChildScrollView(
+            Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  children: const [
-                    CityTimeCard(),
-                  ],
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                ),
+                child: SingleChildScrollView(
+                  child: ListView.separated(
+                    shrinkWrap: true,
+                    itemBuilder: (context, index) => CityTimeCard(
+                      city: cities[index],
+                    ),
+                    separatorBuilder: (context, index) => const SizedBox(
+                      height: 15,
+                    ),
+                    itemCount: cities.length,
+                  ),
                 ),
               ),
             )
